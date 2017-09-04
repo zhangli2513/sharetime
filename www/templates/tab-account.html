@@ -1,0 +1,23 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-list>
+
+      <ion-item class="item item-icon-left">
+        <span class="icon ion-person"></span>
+        <input type="text" ng-model="userInfo.username">
+      </ion-item>
+
+      <ion-item class="item item-icon-left">
+        <span class="icon ion-iphone"></span>
+        <input type="text" ng-model="userInfo.phone">
+      </ion-item>
+
+      <ion-item class="item item-icon-left">
+        <span class="icon ion-ios-locked"></span>
+        <input type="password" ng-model="userInfo.password">
+      </ion-item>
+
+    </ion-list>
+    <button class="button button-balanced button-full" ng-click="toRegister()">注册</button>
+  </ion-content>
+</ion-view>
