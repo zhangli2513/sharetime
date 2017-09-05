@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+html,body,#map{width: 100rem;height: 100rem;}
+.button.space-top {
+  margin-top: 2rem;
+}
+input.inline{
+  display: inline;
+}

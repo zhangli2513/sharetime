@@ -1,28 +1,33 @@
 angular.module('starter.controllers', [])
+  .controller('STController', function($scope,MapManager,$ionicModal) {
+    $scope.infoModal = { }
 
-.controller('DashCtrl', function($scope) {})
+    MapManager.showMap();
+    $scope.mapSize = {
+      width:innerWidth+'px',
+      height:innerHeight+'px'
+    };
+    $ionicModal.fromTemplateUrl('templates/updateMessage.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.updateMessage = function () {
+      $scope.modal.show();
+    };
+    $scope.back = function () {
+      $scope.modal.hide();
+    };
+    $scope.toUpdate = function () {
+      console.log($scope.infoModal);
+    }
+  })
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  .controller('FriendsController', function($scope) {})
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
+  .controller('RankController', function($scope){})
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+  .controller('UserController', function($scope){})
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+;

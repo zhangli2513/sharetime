@@ -1,6 +1,40 @@
 angular.module('starter.services', [])
+  .service('MapManager',function () {
+          //初始化百度地图
+      this.map = new BMap.Map('map');
+         var self=this;
+         //显示地图
+         this.showMap = function () {
+           self.showUserLocation(function (point) {
+             self.map.centerAndZoom(point,15);
+           })
+         };
+         //显示用户位置
+         this.showUserLocation = function (callback) {
+           self.getCurrentLocation().then(function (point) {
+             if(callback){
+               callback(point);
+             }
+             self.map.panTo(point);
+             var userMarker = new BMap.Marker(point);
+             self.map.addOverlay(userMarker);
+           }).catch(function (error) {
+             console.log(error);
+           });
+         };
+         //定位
+         this.getCurrentLocation = function () {
+           return new Promise(function (success,fail) {
+             var geo = new BMap.Geolocation();
+             //getLocationResult->point经纬度对象
+             geo.getCurrentPosition(function (result) {
+               result.point?success(result.point):fail('定位失败');
+             });
+           });
+         };
+  })
 
-.factory('Chats', function() {
+  .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
