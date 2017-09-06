@@ -7,6 +7,15 @@
 
     <link rel="manifest" href="manifest.json">
 
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -16,16 +25,17 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
+    <!--引入百度地图的SDK-->
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=GZcOmK5dMsymaX7DSo1jqUcSyMS3W0PU"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
+    <script src="lib/default.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
-    <!--引入百度地图的SDK-->
-    <script src="http://api.map.baidu.com/api?v=2.0&ak=VU8AvenH7fZ4lf00DATgVDFf5GF5ZAwc"></script>
+    <script src="lib/HttpManager.js"></script>
   </head>
   <body ng-app="starter">
     <!--

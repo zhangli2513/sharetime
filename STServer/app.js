@@ -1,3 +1,6 @@
+
+var defaultInfo = require("./tools/default");
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,9 +10,19 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var news = require("./routes/news");
 
 var app = express();
+app.all("*",function (req,res,next) {
 
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1');
+    res.header("Content-Type", "application/json;charset=utf-8");
+
+    next();
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -24,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use(defaultInfo.NEWS,news);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

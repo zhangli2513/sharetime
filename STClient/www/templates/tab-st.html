@@ -1,15 +1,13 @@
-<ion-view view-title="ST">
-
+<ion-view view-title="ST" class="tab-hidden">
   <ion-nav-buttons>
     <button class="button button-clear" ng-click="updateMessage()">发布</button>
   </ion-nav-buttons>
-
   <ion-nav-buttons side="right">
     <button class="button button-clear">消息</button>
   </ion-nav-buttons>
-
   <ion-content>
-      <div id="map" ng-style="{width:mapSize.width,height:mapSize.height}"></div>
-  </ion-content>
 
+    <div id="map" ng-style="{width:mapSize.width,height:mapSize.height}"></div>
+
+  </ion-content>
 </ion-view>
